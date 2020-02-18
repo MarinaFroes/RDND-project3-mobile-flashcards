@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, FlatList } from 'react-native'
 
 import Deck from './Deck'
 
@@ -9,6 +9,21 @@ export class DeckList extends Component {
       <View style={styles.container}>
         <Text> Deck List </Text>
         <Deck />
+        <FlatList
+          data={[
+            { key: 'Devin' },
+            { key: 'Dan' },
+            { key: 'Dominic' },
+            { key: 'Jackson' },
+            { key: 'James' },
+            { key: 'Joel' },
+            { key: 'John' },
+            { key: 'Jillian' },
+            { key: 'Jimmy' },
+            { key: 'Julie' },
+          ]}
+          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+        />
       </View>
     )
   }
