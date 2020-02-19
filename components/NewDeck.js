@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   textInput: {
     backgroundColor: gainsboro,
     width: '100%',
-    height: 40,
     textAlign: 'center',
     fontSize: 20,
     padding: 10,

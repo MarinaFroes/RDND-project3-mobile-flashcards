@@ -34,11 +34,14 @@ export class NewCard extends Component {
         <Btn
           onPress={this.onPress}
         >
-          <Text> Create deck </Text>
+          <Text> Create card </Text>
         </Btn>
-        <Text style={{ padding: 10, fontSize: 20, color: 'red' }}>
-          {this.state.text}
+        {/* <Text style={{ padding: 10, fontSize: 20, color: 'red' }}>
+          {this.state.question}
         </Text>
+        <Text style={{ padding: 10, fontSize: 20, color: 'red' }}>
+          {this.state.answer}
+        </Text> */}
       </View>
      
     )
@@ -56,7 +59,6 @@ const styles = StyleSheet.create({
   textInput: {
     backgroundColor: gainsboro,
     width: '100%',
-    height: 40,
     textAlign: 'center',
     fontSize: 20,
     padding: 10,
