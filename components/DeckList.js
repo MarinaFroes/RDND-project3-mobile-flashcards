@@ -27,7 +27,7 @@ export class DeckList extends Component {
           <Text>Create deck</Text>
         </Btn>
         <Btn
-          onPress={() => this.props.navigation.navigate('Card')}
+          onPress={() => this.props.navigation.navigate('New Card')}
         >
           <Text>Create card</Text>
         </Btn>
