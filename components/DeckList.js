@@ -4,36 +4,33 @@ import { connect } from 'react-redux'
 import { white, mediumvioletred } from '../utils/color'
 
 import Deck from './Deck'
+import Btn from './Btn'
 
 export class DeckList extends Component {
   render() {
+    console.log(this.props.decks)
     return (
       <View style={styles.container}>
-        <Text> Deck List </Text>
         <FlatList
           data={[
-            { key: 'Devin' },
-            { key: 'Dan' },
-            { key: 'Dominic' },
-            { key: 'Jackson' },
-            { key: 'James' },
-            { key: 'Joel' },
-            { key: 'John' },
-            { key: 'Jillian' },
-            { key: 'Jimmy' },
-            { key: 'Julie' },
+            { title: 'React' },
+            { title: 'JavaScript' },
+            { title: 'Redux' },
+            { title: 'React Native' }
           ]}
-          renderItem={({ item }) => <Deck deckTitle={item.key}/>}
+          renderItem={({ item }) => <Deck  deckTitle={item.title}/>}
         />
 
-        <Button
-          title="Create deck"
+        <Btn
           onPress={() => this.props.navigation.navigate('New Deck')}
-        />
-        <Button
-          title="Create card"
+        >
+          <Text>Create deck</Text>
+        </Btn>
+        <Btn
           onPress={() => this.props.navigation.navigate('Card')}
-        />
+        >
+          <Text>Create card</Text>
+        </Btn>
       </View>
     )
   }
