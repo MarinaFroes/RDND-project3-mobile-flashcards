@@ -1,0 +1,6 @@
+export const gray = '#757575'
+export const white = '#fff'
+export const steelblue = '#4682b4'
+export const skyblue = '#87ceeb'
+export const plum = '#dda0dd'
+export const mediumvioletred = '#c71585'
