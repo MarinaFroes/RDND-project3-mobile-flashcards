@@ -14,10 +14,11 @@ export class Home extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="Decks">
           <Stack.Screen
             name='Decks'
             component={DeckList}
+            options={{ title: 'Home' }}
           />
           <Stack.Screen
             name='New Deck'
