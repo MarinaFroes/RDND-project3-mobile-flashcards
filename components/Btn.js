@@ -16,9 +16,10 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: steelblue,
     padding: 10,
-    margin: 20,
+    marginBottom: 20,
     height: 40,
     width: '80%',
+    alignSelf: 'center'
   },
   text: {
     color: white,
