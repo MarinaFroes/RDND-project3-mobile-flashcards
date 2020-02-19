@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
+import Card from './components/Card'
 
 const Stack = createStackNavigator();
 
@@ -16,9 +17,9 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={DeckList}
-          options={{ title: 'Welcome' }}
         />
-        <Stack.Screen name="NewDeck" component={NewDeck} />
+        <Stack.Screen name="New Deck" component={NewDeck} />
+        <Stack.Screen name="Card" component={Card} />
       </Stack.Navigator>
     </NavigationContainer>
     
@@ -33,3 +34,8 @@ export default function App() {
 //     justifyContent: 'center',
 //   },
 // })
+{/* <Stack.Screen
+  name="Home"
+  component={DeckList}
+  options={{ title: 'Welcome' }}
+/> */}
