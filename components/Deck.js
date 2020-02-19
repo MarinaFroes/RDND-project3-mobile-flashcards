@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-import { skyblue } from '../utils/color'
+import { gainsboro } from '../utils/color'
 
 const Deck = ({ deckTitle }) => {
   return (
@@ -21,17 +21,9 @@ const styles = StyleSheet.create({
   },
   deck: {
     flex: 1,
-    margin: 10,
-    padding: 50,
-    backgroundColor: skyblue,
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    justifyContent: 'center',
+    marginTop: 10,
+    height: 120,
+    backgroundColor: gainsboro,
   },
 })
