@@ -5,7 +5,7 @@ import { skyblue } from '../utils/color'
 
 const Deck = ({ deckTitle }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.deck}>
       <Text style={styles.text}>{deckTitle}</Text>
     </View>
   )
@@ -14,11 +14,16 @@ const Deck = ({ deckTitle }) => {
 export default Deck
 
 const styles = StyleSheet.create({
-  container: {
+  
+  text: {
+    fontSize: 22,
+    textAlign: 'center'
+  },
+  deck: {
     flex: 1,
+    margin: 10,
+    padding: 50,
     backgroundColor: skyblue,
-    alignItems: 'center',
-    justifyContent: 'center',
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -28,9 +33,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    width: '85%',
   },
-  text: {
-    fontSize: 22,
-  }
 })
