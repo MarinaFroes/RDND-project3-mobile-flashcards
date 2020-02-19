@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   deck: {
     flex: 1,
     justifyContent: 'center',
-    marginTop: 10,
+    marginBottom: 10,
     height: 120,
     backgroundColor: gainsboro,
   },
