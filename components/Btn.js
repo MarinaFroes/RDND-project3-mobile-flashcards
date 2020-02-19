@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableHighlight, StyleSheet } from 'react-native'
 import { mediumvioletred, white } from '../utils/color'
 
-const Button = ({ children, onPress}) => {
+const Btn = ({ children, onPress}) => {
   return (
     <TouchableHighlight onPress={onPress} style={styles.btn}>
       <Text style={styles.text}>{children}</Text>
@@ -10,7 +10,7 @@ const Button = ({ children, onPress}) => {
   )
 }
 
-export default Button
+export default Btn
 
 const styles = StyleSheet.create({
   btn: {

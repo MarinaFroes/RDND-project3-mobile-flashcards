@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { skyblue, white } from '../utils/color'
 
-import Button from './Button'
+import Btn from './Btn'
 
 export class Card extends Component {
   onPress = () => {
@@ -13,9 +13,9 @@ export class Card extends Component {
       <View style={styles.container}>
         <View style={styles.card}>
           <Text style={styles.text}> Card </Text>
-          <Button onPress={this.onPress}>
+          <Btn onPress={this.onPress}>
             <Text>Flip card</Text>
-          </Button>
+          </Btn>
         </View>
       </View>
     )
