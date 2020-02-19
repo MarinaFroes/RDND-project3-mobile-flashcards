@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import DeckList from './components/DeckList'
-import NewDeck from './components/NewDeck'
-import Card from './components/Card'
+import DeckList from './DeckList'
+import NewDeck from './NewDeck'
+import Card from './Card'
 
 const Stack = createStackNavigator()
 
