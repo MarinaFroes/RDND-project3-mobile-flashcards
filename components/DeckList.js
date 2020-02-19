@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, FlatList, Button } from 'react-native'
+import { connect } from 'react-redux'
 import { white, mediumvioletred } from '../utils/color'
 
 import Deck from './Deck'
@@ -9,9 +10,6 @@ export class DeckList extends Component {
     return (
       <View style={styles.container}>
         <Text> Deck List </Text>
-
-        <Deck />
-
         <FlatList
           data={[
             { key: 'Devin' },
@@ -25,7 +23,7 @@ export class DeckList extends Component {
             { key: 'Jimmy' },
             { key: 'Julie' },
           ]}
-          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+          renderItem={({ item }) => <Deck deckTitle={item.key}/>}
         />
 
         <Button
@@ -41,7 +39,13 @@ export class DeckList extends Component {
   }
 }
 
-export default DeckList
+function mapStateToProps({ decks }) {
+  return { 
+    decks
+  }
+}
+
+export default connect(mapStateToProps)(DeckList)
 
 const styles = StyleSheet.create({
   container: {
@@ -54,14 +58,3 @@ const styles = StyleSheet.create({
     color: mediumvioletred,
   }
 })
-
-/**
- * function HomeScreen({navigation}) {
-  return (
-    <Button
-      title="Go to Jane's profile"
-      onPress={() => navigation.navigate('Profile', {name: 'Jane'})}
-    />
-  );
-}
- */
