@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Text, TouchableHighlight, StyleSheet } from 'react-native'
-import { mediumvioletred, white } from '../utils/color'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { steelblue, white } from '../utils/color'
 
 const Btn = ({ children, onPress}) => {
   return (
-    <TouchableHighlight onPress={onPress} style={styles.btn}>
+    <TouchableOpacity onPress={onPress} style={styles.btn}>
       <Text style={styles.text}>{children}</Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   )
 }
 
@@ -14,16 +14,16 @@ export default Btn
 
 const styles = StyleSheet.create({
   btn: {
-    backgroundColor: mediumvioletred,
+    backgroundColor: steelblue,
     padding: 10,
-    borderRadius: 7,
-    height: 45,
-    marginLeft: 40,
-    marginRight: 40
+    margin: 20,
+    height: 40,
+    width: '80%',
   },
   text: {
-    color: 'white',
+    color: white,
     textAlign: 'center',
+    fontSize: 18,
   }
 })
 
