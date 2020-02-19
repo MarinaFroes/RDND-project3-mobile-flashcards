@@ -30,7 +30,11 @@ export class DeckList extends Component {
 
         <Button
           title="Create deck"
-          onPress={() => this.props.navigation.navigate('NewDeck', { name: 'Jane' })}
+          onPress={() => this.props.navigation.navigate('New Deck')}
+        />
+        <Button
+          title="Create card"
+          onPress={() => this.props.navigation.navigate('Card')}
         />
       </View>
     )
