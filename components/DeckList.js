@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, FlatList } from 'react-native'
+import { Text, View, StyleSheet, FlatList, Button } from 'react-native'
+import { white, mediumvioletred } from '../utils/color'
 
 import Deck from './Deck'
 
@@ -8,7 +9,9 @@ export class DeckList extends Component {
     return (
       <View style={styles.container}>
         <Text> Deck List </Text>
+
         <Deck />
+
         <FlatList
           data={[
             { key: 'Devin' },
@@ -24,6 +27,11 @@ export class DeckList extends Component {
           ]}
           renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
         />
+
+        <Button
+          title="Create deck"
+          onPress={() => this.props.navigation.navigate('NewDeck', { name: 'Jane' })}
+        />
       </View>
     )
   }
@@ -34,8 +42,22 @@ export default DeckList
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'yellow',
+    backgroundColor: white,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  item: {
+    color: mediumvioletred,
+  }
 })
+
+/**
+ * function HomeScreen({navigation}) {
+  return (
+    <Button
+      title="Go to Jane's profile"
+      onPress={() => navigation.navigate('Profile', {name: 'Jane'})}
+    />
+  );
+}
+ */
