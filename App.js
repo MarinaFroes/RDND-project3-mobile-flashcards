@@ -1,41 +1,18 @@
-import 'react-native-gesture-handler'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers/index'
 
-import DeckList from './components/DeckList'
-import NewDeck from './components/NewDeck'
-import Card from './components/Card'
+import Home from './components/Home'
 
-const Stack = createStackNavigator();
-
-export default function App() {
+function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={DeckList}
-        />
-        <Stack.Screen name="New Deck" component={NewDeck} />
-        <Stack.Screen name="Card" component={Card} />
-      </Stack.Navigator>
-    </NavigationContainer>
-    
+    <Provider store={createStore(reducer)}>
+      <View style={{ flex: 1 }}>
+        <Home />
+      </View>
+    </Provider>
   )
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// })
-{/* <Stack.Screen
-  name="Home"
-  component={DeckList}
-  options={{ title: 'Welcome' }}
-/> */}
+export default App
