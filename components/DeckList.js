@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, FlatList, Button } from 'react-native'
+import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { white, mediumvioletred } from '../utils/color'
 
@@ -10,28 +10,37 @@ export class DeckList extends Component {
   render() {
     console.log(this.props.decks)
     return (
-      <View style={styles.container}>
-        <FlatList
-          data={[
-            { title: 'React' },
-            { title: 'JavaScript' },
-            { title: 'Redux' },
-            { title: 'React Native' }
-          ]}
-          renderItem={({ item }) => <Deck  deckTitle={item.title}/>}
-        />
-
-        <Btn
-          onPress={() => this.props.navigation.navigate('New Deck')}
-        >
-          <Text>Create deck</Text>
-        </Btn>
-        <Btn
-          onPress={() => this.props.navigation.navigate('New Card')}
-        >
-          <Text>Create card</Text>
-        </Btn>
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          {/* <FlatList
+            data={[
+              { title: 'React' },
+              { title: 'JavaScript' },
+              { title: 'Redux' },
+              { title: 'React Native' }
+            ]}
+            renderItem={({ item }) => <Deck  deckTitle={item.title}/>}
+          /> */}
+          <Deck deckTitle="React"/>
+          <Deck deckTitle="React"/>
+          <Deck deckTitle="React"/>
+          <Deck deckTitle="React"/>
+          <Deck deckTitle="React"/>
+          <Deck deckTitle="React"/>
+          <Deck deckTitle="React"/>
+          <Deck deckTitle="React"/>
+          <Btn
+            onPress={() => this.props.navigation.navigate('New Deck')}
+          >
+            <Text>Create deck</Text>
+          </Btn>
+          <Btn
+            onPress={() => this.props.navigation.navigate('New Card')}
+          >
+            <Text>Create card</Text>
+          </Btn>
+        </View>
+      </ScrollView>
     )
   }
 }
