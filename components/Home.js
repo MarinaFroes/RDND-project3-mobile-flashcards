@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import DeckList from './DeckList'
 import NewDeck from './NewDeck'
 import Card from './Card'
+import NewCard from './NewCard'
 
 const Stack = createStackNavigator()
 
@@ -25,6 +26,10 @@ export class Home extends Component {
           <Stack.Screen
             name='Card'
             component={Card}
+          />
+          <Stack.Screen
+            name='New Card'
+            component={NewCard}
           />
         </Stack.Navigator>
       </NavigationContainer>
