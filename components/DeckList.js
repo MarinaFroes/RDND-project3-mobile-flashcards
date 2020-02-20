@@ -16,16 +16,15 @@ export class DeckList extends Component {
   }
 
   render() {
-    const { decksIds, decks, navigation } = this.props
+    const { decksIds, decks, navigation, loading } = this.props
 
-    if (!decks) {
+    if (loading === true) {
       return <Loading />
     }
  
     return (
-      <View>
-        <ScrollView>
-          <Text style={styles.header}>Here is your decks list:</Text>
+      <ScrollView style={{flex: 1}}>
+        <Text style={styles.header}>Here is your decks list:</Text>
           {
             decksIds !== null
               ? decksIds.map(deck_id => (
@@ -42,11 +41,9 @@ export class DeckList extends Component {
                 </View>
               )
           }
-        </ScrollView>
-        <View>
-          <FloatBtn onPress={() => navigation.navigate('New Deck')}/>
-        </View>
-     </View>
+        
+        <FloatBtn onPress={() => navigation.navigate('New Deck')}/>
+      </ScrollView>
     )
   }
 }
@@ -55,6 +52,7 @@ function mapStateToProps({ decks }) {
   const decksIds = decks ? Object.keys(decks) : null
 
   return { 
+    loading: decks === null ? true : false,
     decks,
     decksIds
   }
