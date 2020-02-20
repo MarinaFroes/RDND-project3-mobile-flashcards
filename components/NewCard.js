@@ -1,34 +1,60 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
 import { white, gainsboro } from '../utils/color'
+import { handleUpdateDecks } from '../actions/decks'
+import { handleAddCard } from '../actions/cards'
 
 import Btn from './Btn'
 
-export class NewCard extends Component {
+class NewCard extends Component {
   state = {
     question: '',
     answer: ''
   }
 
   onPress = () => {
-    // TODO
+    const { dispatch, navigation } = this.props
+    const { question, answer } = this.state
+    const deck_id = this.props.route.params.deck_id
+
+    const card = {
+      deck_id,
+      question,
+      answer
+    }
+
+    dispatch(handleAddCard(card))
+    dispatch(handleUpdateDecks())
+
+    this.setState({
+      question: '',
+      answer: '',
+    })
+
+    return navigation.navigate('Deck', {
+      deck_id
+    })
   }
 
   render() {
+    // console.warn(this.props.route.params.deck_id)
+    const { answer, question } = this.state
+
     return (
       <View style={styles.container}>
         <TextInput
           style={styles.textInput}
           placeholder="My question"
           onChangeText={(question) => this.setState({ question })}
-          value={this.state.question}
+          value={question}
           multiline={true}
         />
         <TextInput
           style={styles.textInput}
           placeholder="My answer"
           onChangeText={(answer) => this.setState({ answer })}
-          value={this.state.answer}
+          value={answer}
           multiline={true}
         />
         <Btn
@@ -48,7 +74,7 @@ export class NewCard extends Component {
   }
 }
 
-export default NewCard
+export default connect()(NewCard)
 
 const styles = StyleSheet.create({
   container: {
