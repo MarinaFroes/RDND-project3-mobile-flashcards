@@ -69,15 +69,13 @@ export class Quiz extends Component {
             ) : (
               <View style={styles.messageContainer}>
                 <Text style={styles.finalMessage}>You finished the quiz</Text>
-                <Text style={styles.finalMessage} >You got {correctAnswers / deck.questions.length * 100}% of correct answers</Text>
+                <Text style={styles.finalMessage} >You got {(correctAnswers / deck.questions.length * 100).toFixed(2)}% of correct answers</Text>
 
                 <Button title='Back to Deck' onPress={() => this.props.navigation.navigate('Deck', {
                   deck_id
                 })} />
 
-                <Button title='Restart quiz' onPress={() => this.props.navigation.navigate('Quiz', {
-                  deck_id
-                })} />
+                <Button title='Restart quiz' onPress={this.handleRestartQuiz} />
               </View>
             )
         }
