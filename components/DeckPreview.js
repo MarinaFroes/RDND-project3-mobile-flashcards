@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 
 import { gainsboro } from '../utils/color'
 
-function DeckPreview({ decks, deck_id }) {
-  return (
-    <TouchableOpacity onPress={() => this.props.navigation.navigate('Deck', {
-      deck_id,
-    })}>
-      <View style={styles.deck}>
-        <Text style={styles.deckTitle}>{decks[deck_id].title}</Text>
-        <Text style={styles.text}>{decks[deck_id].questions ? decks[deck_id].questions.length : 0} cards</Text>
-      </View>
-    </TouchableOpacity>
-  )
+class DeckPreview extends Component {
+  render() {
+    
+    const { navigation, decks, deck_id } = this.props
+    
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('Deck', {
+        deck_id,
+      })}>
+        <View style={styles.deck}>
+          <Text style={styles.deckTitle}>{decks[deck_id].title}</Text>
+          <Text style={styles.text}>{decks[deck_id].questions ? decks[deck_id].questions.length : 0} cards</Text>
+        </View>
+      </TouchableOpacity>
+    )
+    }
 }
 
 export default DeckPreview
