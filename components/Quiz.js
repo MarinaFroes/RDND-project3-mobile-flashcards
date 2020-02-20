@@ -59,10 +59,10 @@ export class Quiz extends Component {
                 />
                 <View style={styles.btnContainer}>
                   <Btn onPress={() => this.onPress('true')}>
-                    <Text>True</Text>
+                    <Text>Correct</Text>
                   </Btn> 
                   <Btn onPress={() => this.onPress('false')}>
-                    <Text>False</Text>
+                    <Text>Incorrect</Text>
                   </Btn>
                 </View>
               </View>
@@ -75,7 +75,9 @@ export class Quiz extends Component {
                   deck_id
                 })} />
 
-                <Button title='Restart quiz' onPress={() => this.handleRestartQuiz} />
+                <Button title='Restart quiz' onPress={() => this.props.navigation.navigate('Quiz', {
+                  deck_id
+                })} />
               </View>
             )
         }
