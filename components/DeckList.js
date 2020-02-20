@@ -19,7 +19,7 @@ export class DeckList extends Component {
   render() {
     // console.warn('----DECK LIST----')
     // console.warn(this.props.decks)
-    const { decksIds, decks } = this.props
+    const { decksIds, decks, navigation } = this.props
 
     return (
       <View>
@@ -28,13 +28,18 @@ export class DeckList extends Component {
           {
             decksIds !== null
               ? decksIds.map(deck_id => (
-                <DeckPreview key={deck_id} deck_id={deck_id} decks={decks} />
+                <DeckPreview
+                  key={deck_id}
+                  deck_id={deck_id}
+                  decks={decks}
+                  navigation={navigation}
+                />
               ))
               : <Text>You don't have any deck yet</Text>
           }
         </ScrollView>
         <View>
-          <FloatBtn onPress={() => this.props.navigation.navigate('New Deck')}/>
+          <FloatBtn onPress={() => navigation.navigate('New Deck')}/>
         </View>
      </View>
     )
