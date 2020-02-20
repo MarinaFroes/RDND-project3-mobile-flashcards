@@ -6,8 +6,15 @@ import { white, mediumvioletred } from '../utils/color'
 import Deck from './Deck'
 // import Btn from './Btn'
 import FloatBtn from './FloatBtn'
+import { handleReceiveDecks } from '../actions/decks'
 
 export class DeckList extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+
+    dispatch(handleReceiveDecks())
+  }
+
   render() {
     console.log(this.props.decks)
     return (
