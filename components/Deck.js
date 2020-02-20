@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { gray } from '../utils/color'
 import Card from './Card'
+import Loading from './Loading'
 
 class Deck extends Component {
 
@@ -12,7 +13,7 @@ class Deck extends Component {
   const deck = this.props.decks[deck_id]
   
   if (!deck) {
-    return <Text>Loading</Text>
+    return <Loading />
   }
 
   return (
@@ -36,6 +37,9 @@ class Deck extends Component {
         title='Start quiz'
       />  
       <View>
+        <Text style={styles.subtitle}>
+          Cards added to this deck:
+        </Text>
         {
           deck.questions.length === 0
             ? (
@@ -87,9 +91,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
   },
+  subtitle: {
+    fontSize: 22,
+    textAlign: 'center',
+    padding: 10,
+    marginTop: 20,
+  },
   noCardsMessage: {
     textAlign: 'center',
-    fontSize: 22,
+    fontSize: 20,
     color: gray
   },
   noCardsContainer: {
