@@ -58,10 +58,10 @@ export class Quiz extends Component {
                   card={deck.questions[index]}
                 />
                 <View style={styles.btnContainer}>
-                  <Btn onPress={() => this.onPress('true')}>
+                  <Btn onPress={() => this.onPress('correct')}>
                     <Text>Correct</Text>
                   </Btn> 
-                  <Btn onPress={() => this.onPress('false')}>
+                  <Btn onPress={() => this.onPress('incorrect')}>
                     <Text>Incorrect</Text>
                   </Btn>
                 </View>
