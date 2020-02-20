@@ -5,19 +5,19 @@ let decks = {
     questions: [
       {
         question: "React Props are like function arguments in JavaScript and attributes in HTML.",
-        answer: true
+        answer: 'correct'
       },
       {
         question: "When the state object changes, the component re-renders.",
-        answer: true
+        answer: 'correct'
       },
       {
         question: "The only way to initialize the state object is in the constructor.",
-        answer: false
+        answer: 'incorrect'
       },
       {
         question: "JSX is typesafe.",
-        answer: true
+        answer: 'correct'
       }
     ]
   },
@@ -27,11 +27,11 @@ let decks = {
     questions: [
       {
         question: "JavaScript can change HTML attribute values.",
-        answer: true
+        answer: 'correct'
       },
       {
         question: "Multi-line comments in JavaScript start with //.",
-        answer: false
+        answer: 'incorrect'
       }
     ]
   }
