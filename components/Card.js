@@ -1,43 +1,50 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
-import { skyblue, white } from '../utils/color'
+import { Text, View, StyleSheet, Button } from 'react-native'
+import { black, white } from '../utils/color'
 
-import Btn from './Btn'
 
 export class Card extends Component {
+  state = {
+    flipCard: false
+  }
+
   onPress = () => {
-    
+    this.setState(prevState => ({
+      flipCard: !prevState.flipCard
+    }))
   }
   render() {
+    const { flipCard } = this.state
+    const { card, index, deck } = this.props
+
     return (
-      <View style={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.text}> Card </Text>
-          <Btn onPress={this.onPress}>
-            <Text>Flip card</Text>
-          </Btn>
-        </View>
+      <View style={styles.card}>
+        {
+          !flipCard
+              ? <Text style={styles.content}>Question: {card.question}</Text>
+              : <Text style={styles.content}>Answer: {typeof card.answer === 'boolean' ? card.answer.toString() : card.answer}</Text>
+        }
+        <Text style={styles.text}>{index + 1} of {deck.questions.length}</Text>
+        <Button onPress={this.onPress} title="Flip card"/>
       </View>
     )
   }
 }
 
-
 export default Card
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: white,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   card: {
-    height: '30%',
-    width: '90%',
-    backgroundColor: skyblue,
+    flex: 1,
+    justifyContent: 'center',
+    minHeight: 250,
+    margin: 10,
+    marginLeft: 40,
+    marginRight: 40,
+    padding: 20,
+    backgroundColor: white,
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -46,8 +53,14 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  text: {
+  content: {
     fontSize: 22,
-    textAlign: 'center'
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  text: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 10,
   }
 })
