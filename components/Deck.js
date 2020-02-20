@@ -7,6 +7,18 @@ import Card from './Card'
 import Loading from './Loading'
 
 class Deck extends Component {
+  onPress = () => {
+    const deck_id = this.props.route.params.deck_id
+    const deck = this.props.decks[deck_id]
+    
+    if (deck.questions.length === 0) {
+      return alert('Add cards to start a quiz')
+    }
+
+    return this.props.navigation.navigate('Quiz', {
+      deck_id
+    })
+  }
 
   render() {
   const deck_id = this.props.route.params.deck_id
@@ -31,9 +43,7 @@ class Deck extends Component {
         title='Add new card'
       />  
       <Button
-        onPress={() => this.props.navigation.navigate('Quiz', {
-          deck_id
-        })}
+        onPress={this.onPress}
         title='Start quiz'
       />  
       <View>
