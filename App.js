@@ -1,7 +1,5 @@
 import 'react-native-gesture-handler'
-
 import React from 'react'
-// import { View } from 'react-native'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
@@ -14,12 +12,10 @@ import NewCard from './components/NewCard'
 import Deck from './components/Deck'
 import Quiz from './components/Quiz'
 
-const Stack = createStackNavigator()
-
 import reducer from './reducers/index'
 import middleware from './middleware/index'
-// import Home from './components/Home'
 
+const Stack = createStackNavigator()
 const store = createStore(reducer, middleware)
 
 function App() {
