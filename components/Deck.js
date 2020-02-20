@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, Text, StyleSheet, Button, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 
-// import { gainsboro } from '../utils/color'
-// import Btn from './Btn'
+import { gray } from '../utils/color'
+import Card from './Card'
 
 class Deck extends Component {
 
@@ -16,8 +16,8 @@ class Deck extends Component {
   }
 
   return (
-    <View style={styles.deck}>
-      <View style={styles.card}>
+    <ScrollView>
+      <View style={styles.deckHeader}>
         <Text style={styles.title}>
           {deck.title}
         </Text>
@@ -35,9 +35,26 @@ class Deck extends Component {
         })}
         title='Start quiz'
       />  
-    </View>
-
-
+      <View>
+        {
+          deck.questions.length === 0
+            ? (
+              <View style={styles.noCardsContainer}>
+                <Text style={styles.noCardsMessage}>You don't have any cards yet</Text>
+                <Text style={styles.noCardsMessage}>Add a card to be able to start a quiz</Text>
+              </View>
+            )
+            : deck.questions.map((card, index) => (
+              <Card
+                key={index}
+                card={card}
+                deck={deck}
+                index={index}
+              />
+            ))
+        }
+      </View>
+    </ScrollView>
   )
   }
 }
@@ -51,25 +68,35 @@ function mapStateToProps({ decks }) {
 export default connect(mapStateToProps)(Deck)
 
 const styles = StyleSheet.create({
-  deck: {
+  deckHeader: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
     height: 120,
   },
-  card: {
+  deckHeader: {
     padding: 40,
   },
   text: {
-    fontSize: 22,
+    fontSize: 20,
     textAlign: 'center',
   },
   title: {
-    fontSize: 26,
-    textAlign: 'center'
+    fontSize: 30,
+    textAlign: 'center',
+    padding: 10,
+  },
+  noCardsMessage: {
+    textAlign: 'center',
+    fontSize: 22,
+    color: gray
+  },
+  noCardsContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    height: 200,
   }
-  
 })
 
 
