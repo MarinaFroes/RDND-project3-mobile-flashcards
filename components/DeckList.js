@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import { MaterialCommunityIcons} from '@expo/vector-icons'
 
 import { gray } from '../utils/color'
 import Loading from './Loading'
 import DeckPreview from './DeckPreview'
-import FloatBtn from './FloatBtn'
 import { handleReceiveDecks } from '../actions/decks'
 
 export class DeckList extends Component {
@@ -23,8 +23,22 @@ export class DeckList extends Component {
     }
  
     return (
-      <ScrollView style={{flex: 1}}>
-        <Text style={styles.header}>Here is your decks list:</Text>
+      <ScrollView style={styles.container}>
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>
+            Deck list
+          </Text>
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => navigation.navigate('New Deck')}
+          >
+            <MaterialCommunityIcons
+              name='plus-circle'
+              size={40}
+              color={gray}
+            />
+          </TouchableOpacity>
+        </View>
           {
             decksIds !== null
               ? decksIds.map(deck_id => (
@@ -40,9 +54,7 @@ export class DeckList extends Component {
                   <Text style={styles.noDeckMessage}>You don't have any deck yet</Text>
                 </View>
               )
-          }
-        
-        <FloatBtn onPress={() => navigation.navigate('New Deck')}/>
+        }
       </ScrollView>
     )
   }
@@ -61,9 +73,12 @@ function mapStateToProps({ decks }) {
 export default connect(mapStateToProps)(DeckList)
 
 const styles = StyleSheet.create({
-  header: {
+  container: {
+    flex: 1,
+  },
+  headerText: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     padding: 20,
   },
@@ -77,4 +92,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 200,
   },
+  headerContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 20,
+  },
+  addButton: {
+    width: 40,
+    height: 40,
+  }
 })
