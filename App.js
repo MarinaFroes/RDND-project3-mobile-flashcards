@@ -12,6 +12,7 @@ import NewDeck from './components/NewDeck'
 import Card from './components/Card'
 import NewCard from './components/NewCard'
 import Deck from './components/Deck'
+import Quiz from './components/Quiz'
 
 const Stack = createStackNavigator()
 
@@ -36,16 +37,20 @@ function App() {
             component={NewDeck}
           />
           <Stack.Screen
-            name='Card'
-            component={Card}
+            name='Deck'
+            component={Deck}
           />
           <Stack.Screen
             name='New Card'
             component={NewCard}
           />
           <Stack.Screen
-            name='Deck'
-            component={Deck}
+            name='Card'
+            component={Card}
+          />
+          <Stack.Screen
+            name='Quiz'
+            component={Quiz}
           />
         </Stack.Navigator>
       </NavigationContainer>
