@@ -1,6 +1,4 @@
 export const gainsboro = '#dcdcdc'
 export const white = '#fff'
 export const steelblue = '#4682b4'
-export const skyblue = '#87ceeb'
-export const plum = '#dda0dd'
-export const mediumvioletred = '#c71585'
+export const black = '#000'
