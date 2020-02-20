@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     minHeight: 250,
+    minWidth: '80%',
     margin: 10,
     marginLeft: 40,
     marginRight: 40,
