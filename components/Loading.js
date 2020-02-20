@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
 
 import { gray } from '../utils/color'
 
@@ -9,6 +9,7 @@ function Loading() {
       <Text style={styles.loadingMessage}>
         Loading...
       </Text>
+      <ActivityIndicator size="large" color={gray} />
     </View>
   )
 }
