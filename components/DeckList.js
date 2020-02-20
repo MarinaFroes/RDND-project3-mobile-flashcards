@@ -5,6 +5,7 @@ import { white, mediumvioletred } from '../utils/color'
 
 import Deck from './Deck'
 // import Btn from './Btn'
+import DeckPreview from './DeckPreview'
 import FloatBtn from './FloatBtn'
 import { handleReceiveDecks } from '../actions/decks'
 
@@ -16,22 +17,20 @@ export class DeckList extends Component {
   }
 
   render() {
+    console.log('----DECK LIST----')
     console.log(this.props.decks)
+    const { decksIds, decks } = this.props
     return (
       <View>
         <ScrollView>
-          <Text style={styles.header}>Here is you decks list:</Text>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
-          <Deck deckTitle="React"/>
+          <Text style={styles.header}>Here is your decks list:</Text>
+          {
+            decksIds !== null
+              ? decksIds.map(deck_id => (
+                <DeckPreview key={deck_id} deck_id={deck_id} decks={decks} />
+              ))
+              : <Text>You don't have any deck yet</Text>
+          }
         </ScrollView>
         <View>
           <FloatBtn onPress={() => this.props.navigation.navigate('New Deck')}/>
@@ -42,8 +41,11 @@ export class DeckList extends Component {
 }
 
 function mapStateToProps({ decks }) {
+  const decksIds = decks ? Object.keys(decks) : null
+
   return { 
-    decks
+    decks,
+    decksIds
   }
 }
 
