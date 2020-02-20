@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { white, mediumvioletred } from '../utils/color'
+// import { white, mediumvioletred } from '../utils/color'
 
-import Deck from './Deck'
+// import Deck from './Deck'
 // import Btn from './Btn'
 import DeckPreview from './DeckPreview'
 import FloatBtn from './FloatBtn'
@@ -17,9 +17,10 @@ export class DeckList extends Component {
   }
 
   render() {
-    console.log('----DECK LIST----')
-    console.log(this.props.decks)
+    // console.warn('----DECK LIST----')
+    // console.warn(this.props.decks)
     const { decksIds, decks } = this.props
+
     return (
       <View>
         <ScrollView>
@@ -61,12 +62,12 @@ const styles = StyleSheet.create({
 })
 
 {/* <Btn
-            onPress={() => this.props.navigation.navigate('New Deck')}
-          >
-            <Text>Create deck</Text>
-          </Btn>
-          <Btn
-            onPress={() => this.props.navigation.navigate('New Card')}
-          >
-            <Text>Create card</Text>
-          </Btn> */}
+      onPress={() => this.props.navigation.navigate('New Deck')}
+    >
+      <Text>Create deck</Text>
+    </Btn>
+    <Btn
+      onPress={() => this.props.navigation.navigate('New Card')}
+    >
+      <Text>Create card</Text>
+    </Btn> */}
