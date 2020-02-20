@@ -9,7 +9,6 @@ export class Quiz extends Component {
   state = {
     index: 0,
     correctAnswers: 0,
-    // toDeck: false
   }
 
   onPress = (answer) => {
@@ -96,7 +95,6 @@ export default connect(mapStateToProps)(Quiz)
 const styles = StyleSheet.create({
   quizContainer: {
     flex: 1,
-    // width: '100%'
     justifyContent: 'center',
     alignItems: 'center'
   },
