@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-// import { white, mediumvioletred } from '../utils/color'
 
-// import Deck from './Deck'
-// import Btn from './Btn'
+import { gray } from '../utils/color'
+import Loading from './Loading'
 import DeckPreview from './DeckPreview'
 import FloatBtn from './FloatBtn'
 import { handleReceiveDecks } from '../actions/decks'
@@ -17,10 +16,12 @@ export class DeckList extends Component {
   }
 
   render() {
-    // console.warn('----DECK LIST----')
-    // console.warn(this.props.decks)
     const { decksIds, decks, navigation } = this.props
 
+    if (!decks) {
+      return <Loading />
+    }
+ 
     return (
       <View>
         <ScrollView>
@@ -35,7 +36,11 @@ export class DeckList extends Component {
                   navigation={navigation}
                 />
               ))
-              : <Text>You don't have any deck yet</Text>
+              : (
+                <View style={styles.noDeckContainer}>
+                  <Text style={styles.noDeckMessage}>You don't have any deck yet</Text>
+                </View>
+              )
           }
         </ScrollView>
         <View>
@@ -64,15 +69,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 20,
   },
+  noDeckMessage: {
+    textAlign: 'center',
+    fontSize: 22,
+    color: gray
+  },
+  noDeckContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    height: 200,
+  },
 })
-
-{/* <Btn
-      onPress={() => this.props.navigation.navigate('New Deck')}
-    >
-      <Text>Create deck</Text>
-    </Btn>
-    <Btn
-      onPress={() => this.props.navigation.navigate('New Card')}
-    >
-      <Text>Create card</Text>
-    </Btn> */}
