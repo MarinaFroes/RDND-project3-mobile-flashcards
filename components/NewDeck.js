@@ -11,42 +11,26 @@ export class NewDeck extends Component {
   state = {
     deckTitle: '',
     toDeck: false,
-    deck_id: ''
   }
 
   onPress = () => {
-    const { dispatch } = this.props
+    const { dispatch, navigation } = this.props
     const { deckTitle } = this.state
     const deck_id = generateUID()
 
     dispatch(handleSaveDeckTitle({ deckTitle, deck_id }))
 
     this.setState({
-      deckTitle: '',
-      toDeck: true,
-      deck_id
+      deckTitle: ''
+    })
+
+    return navigation.navigate('Deck', {
+      deck_id,
     })
   }
 
   render() {
-    const { deckTitle, deck_id, toDeck } = this.state
-
-    if (toDeck === true) {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.successMessage}>
-            Your deck was created.
-          </Text>
-          <Button
-            title="Go to your new deck"
-            onPress={() => this.props.navigation.navigate('Deck', {
-              deckTitle: deckTitle,
-              deck_id: deck_id
-            })}
-          />
-        </View>
-      )
-    }
+    const { deckTitle } = this.state
     
     return (
       <View style={styles.container}>
