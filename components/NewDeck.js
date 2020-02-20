@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, StyleSheet, Button } from 'react-native'
-import { white, gainsboro } from '../utils/color'
+import { View, TextInput, StyleSheet, Button } from 'react-native'
+import { white } from '../utils/color'
 import { connect } from 'react-redux'
 
 import { handleSaveDeckTitle } from '../actions/decks'
 import { generateUID } from '../utils/_DATA'
-import Btn from './Btn'
 
 export class NewDeck extends Component {
   state = {
@@ -16,6 +15,11 @@ export class NewDeck extends Component {
   onPress = () => {
     const { dispatch, navigation } = this.props
     const { deckTitle } = this.state
+
+    if (deckTitle === '') {
+      return alert('Please, add a title')
+    }
+
     const deck_id = generateUID()
 
     dispatch(handleSaveDeckTitle({ deckTitle, deck_id }))
@@ -36,16 +40,15 @@ export class NewDeck extends Component {
       <View style={styles.container}>
         <TextInput
           style={styles.textInput}
-          placeholder="My Deck"
+          placeholder="Type a deck title"
           onChangeText={(deckTitle) => this.setState({ deckTitle })}
           value={deckTitle}
           multiline={true}
         />
-        <Btn
+        <Button
+          title='Create deck'
           onPress={this.onPress}
-        >
-          <Text> Create deck </Text>
-        </Btn>
+        />  
       </View>
     )
   }
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textInput: {
-    backgroundColor: gainsboro,
+    backgroundColor: white,
     width: '100%',
     textAlign: 'center',
     fontSize: 20,
