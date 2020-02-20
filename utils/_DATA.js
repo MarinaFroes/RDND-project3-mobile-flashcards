@@ -1,36 +1,36 @@
 let decks = {
-  "wdkp9xk3edalu40frxoigl": {
-    deck_id: "wdkp9xk3edalu40frxoigl",
-    title: "React",
+  'wdkp9xk3edalu40frxoigl': {
+    deck_id: 'wdkp9xk3edalu40frxoigl',
+    title: 'React',
     questions: [
       {
-        question: "React Props are like function arguments in JavaScript and attributes in HTML.",
+        question: 'React Props are like function arguments in JavaScript and attributes in HTML.',
         answer: 'correct'
       },
       {
-        question: "When the state object changes, the component re-renders.",
+        question: 'When the state object changes, the component re-renders.',
         answer: 'correct'
       },
       {
-        question: "The only way to initialize the state object is in the constructor.",
+        question: 'The only way to initialize the state object is in the constructor.',
         answer: 'incorrect'
       },
       {
-        question: "JSX is typesafe.",
+        question: 'JSX is typesafe.',
         answer: 'correct'
       }
     ]
   },
-  "e1bz7itvzi8351djcnes7j": {
-    deck_id: "e1bz7itvzi8351djcnes7j",
-    title: "JavaScript",
+  'e1bz7itvzi8351djcnes7j': {
+    deck_id: 'e1bz7itvzi8351djcnes7j',
+    title: 'JavaScript',
     questions: [
       {
-        question: "JavaScript can change HTML attribute values.",
+        question: 'JavaScript can change HTML attribute values.',
         answer: 'correct'
       },
       {
-        question: "Multi-line comments in JavaScript start with //.",
+        question: 'Multi-line comments in JavaScript start with //.',
         answer: 'incorrect'
       }
     ]
