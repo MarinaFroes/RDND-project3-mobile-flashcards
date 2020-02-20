@@ -11,7 +11,7 @@ This app is the third project of the Udacity React Developer Nanodegree and foll
 
 ## Overview
 
-![screenshot]()
+![screenshot](./assets/ScreenShot.png)
 
 ## Udacity Specification
 
@@ -45,7 +45,7 @@ This app is the third project of the Udacity React Developer Nanodegree and foll
 - [x] The view displays the number of questions remaining.
 - [x] When the last question is answered, a score is displayed as a percentage of correct answers.
 - [x] When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
-- [ ] Both the 'Restart Quiz' and 'Back to Deck' buttons route correctly to their respective views.
+- [x] Both the 'Restart Quiz' and 'Back to Deck' buttons route correctly to their respective views.
 - [x] The view includes a form for creating a new deck - which should just be an input for the title and a 'Create Deck' button.
 - [x] Pressing the button correctly creates the deck and routes the user to the Individual Deck view for the new deck.
 - [x] Logic for notification has been implemented. Notifications are generated at a specific time if the user hasn't completed at least one quiz for that day.
@@ -60,7 +60,7 @@ This app is the third project of the Udacity React Developer Nanodegree and foll
 ## Started code provided by Udacity
 
 - There was no started code provided by Udacity.
-- I built a React native/Redux front end for the application using the [expo init](https://facebook.github.io/react-native/docs/getting-started) to bootstrap the project.
+- I built a React native/Redux front end for the application using the [expo-cli](https://facebook.github.io/react-native/docs/getting-started) to bootstrap the project.
 
 
 ## How to install and use it?
@@ -79,6 +79,6 @@ $ expo start
 
 ## References and Resources
 
-- This project was created with [expo init](https://facebook.github.io/react-native/docs/getting-started).
+- This project was created with [expo-cli](https://facebook.github.io/react-native/docs/getting-started).
 - [Redux Documentation](https://redux.js.org/)
 - [MDN Documentation](https://developer.mozilla.org)
