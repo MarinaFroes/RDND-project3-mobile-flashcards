@@ -3,10 +3,11 @@ import { View, Text, StyleSheet } from 'react-native'
 
 import { gainsboro } from '../utils/color'
 
-const Deck = ({ deckTitle }) => {
+const Deck = ({ deckTitle, deck_id }) => {
   return (
     <View style={styles.deck}>
       <Text style={styles.text}>{deckTitle}</Text>
+      <Text style={styles.text}>{deck_id}</Text>
     </View>
   )
 }
