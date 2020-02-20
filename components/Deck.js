@@ -14,7 +14,6 @@ const Deck = ({ deckTitle }) => {
 export default Deck
 
 const styles = StyleSheet.create({
-  
   text: {
     fontSize: 22,
     textAlign: 'center'
