@@ -8,18 +8,19 @@ import Loading from './Loading'
 import DeckPreview from './DeckPreview'
 // import { handleReceiveDecks } from '../actions/decks'
 import { receiveDecks } from '../actions'
-import { getDecks, clearStorage } from '../utils/api'
+import { getDecks, clearAppData } from '../utils/api'
 
 export class DeckList extends Component {
   componentDidMount() {
     const { dispatch } = this.props
     
     // dispatch(handleReceiveDecks())
-    getDecks().then((decks) => dispatch(receiveDecks(decks)))
+    getDecks()
+      .then((decks) => dispatch(receiveDecks(decks)))
   }
 
   handleClearStorage = () => {
-    return clearStorage()
+    clearAppData()
   }
 
   render() {
@@ -77,12 +78,12 @@ export class DeckList extends Component {
   }
 }
 
-function mapStateToProps({ decks }) {
-  const decksIds = decks ? Object.keys(decks) : null
-
+function mapStateToProps(state) {
+  const decksIds = state.decks ? Object.keys(state.decks) : null
+  console.log(state)
   return { 
-    loading: decks === null ? true : false,
-    decks,
+    loading: state.decks === null ? true : false,
+    decks: state.decks,
     decksIds
   }
 }

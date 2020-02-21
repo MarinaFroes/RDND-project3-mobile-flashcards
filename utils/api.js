@@ -1,67 +1,109 @@
 import { AsyncStorage } from 'react-native'
 
-// import {
-//   _getDecks,
-//   _getDeck,
-//   _saveDeckTitle,
-//   _addCardToDeck
-// } from './_DATA'
-
-// export function getDecks() {
-//   return _getDecks()
-// }
-
-// export function getDeck(info) {
-//   return _getDeck(info)
-// }
-
-// export function saveDeckTitle(info) {
-//   return _saveDeckTitle(info)
-// }
-
-// export function addCardToDeck(info) {
-//   return _addCardToDeck(info)
-// }
-
 const UDACITY_FLASHCARDS_KEY = 'udacity:flashcards'
 
-// ASYNC STORAGE
-export function getDecks() {
-  return AsyncStorage.getItem(UDACITY_FLASHCARDS_KEY)
-}
+const dummyData = () => ({
+  'wdkp9xk3edalu40frxoigl': {
+    deck_id: 'wdkp9xk3edalu40frxoigl',
+    title: 'React',
+    questions: [
+      {
+        question: 'React Props are like function arguments in JavaScript and attributes in HTML.',
+        answer: 'correct'
+      },
+      {
+        question: 'When the state object changes, the component re-renders.',
+        answer: 'correct'
+      },
+      {
+        question: 'The only way to initialize the state object is in the constructor.',
+        answer: 'incorrect'
+      },
+      {
+        question: 'JSX is typesafe.',
+        answer: 'correct'
+      }
+    ]
+  },
+  'e1bz7itvzi8351djcnes7j': {
+    deck_id: 'e1bz7itvzi8351djcnes7j',
+    title: 'JavaScript',
+    questions: [
+      {
+        question: 'JavaScript can change HTML attribute values.',
+        answer: 'correct'
+      },
+      {
+        question: 'Multi-line comments in JavaScript start with //.',
+        answer: 'incorrect'
+      }
+    ]
+  }
+})
 
-export function addDeck(deck) {
-  console.warn(deck)
-  return AsyncStorage.mergeItem(UDACITY_FLASHCARDS_KEY, JSON.stringify({
-    [deck.deck_id]: {
-      ...deck
+export async function getDecks() {
+  try {
+    const results = await AsyncStorage.getItem(UDACITY_FLASHCARDS_KEY)
+    if (results) {
+      const data = JSON.parse(results)
+      return data
     }
-  }))
+    else {
+      await AsyncStorage.setItem(UDACITY_FLASHCARDS_KEY, JSON.stringify(dummyData()))
+      return dummyData()
+    }
+  }
+  catch (error) {
+    await AsyncStorage.setItem(UDACITY_FLASHCARDS_KEY, JSON.stringify(dummyData()))
+    return dummyData()
+  }
 }
 
-export function addCard(card) {
-  AsyncStorage.getItem(UDACITY_FLASHCARDS_KEY).then((results) => {
-    const decks = JSON.parse(results);
-    const deck = decks[card.deck_id];
+export async function saveDeckTitle(deck) {
+
+  await AsyncStorage.mergeItem(UDACITY_FLASHCARDS_KEY, JSON.stringify(
+    {
+      [deck.deck_id]: deck
+    }
+  ))
+  return deck
+}
+
+export async function addCardToDeck(card) {
+  const results = await AsyncStorage.getItem(UDACITY_FLASHCARDS_KEY)
+  if (results) {
+    const data = JSON.parse(results)
+    const deck = data[card.deck_id]
     deck.questions = deck.questions.concat({
       question: card.question,
       answer: card.answer
-    });
-
-    AsyncStorage.mergeItem(UDACITY_FLASHCARDS_KEY, JSON.stringify({[card.deck_id]: deck}))
-  })
-}
-
-export function removeDeck(deck_id) {
-  return AsyncStorage.getItem(UDACITY_FLASHCARDS_KEY)
-    .then((results) => {
-      const decks = JSON.parse(results)
-      decks[deck_id] = undefined
-      delete decks[deck_id]
-      AsyncStorage.setItem(UDACITY_FLASHCARDS_KEY, JSON.stringify(decks))
     })
+    await AsyncStorage.mergeItem(UDACITY_FLASHCARDS_KEY, JSON.stringify(
+      {
+        [card.deck_id]: deck
+      }
+    ))
+    return card
+  }
 }
 
-export function clearStorage() {
-  return AsyncStorage.clear()
+export async function removeDeck(deck_id) {
+  const results = await AsyncStorage.getItem(UDACITY_FLASHCARDS_KEY)
+  if (results) {
+    const data = JSON.parse(results)
+    delete data[deck_id]
+
+    await AsyncStorage.setItem(UDACITY_FLASHCARDS_KEY, JSON.stringify(data))
+    return data
+  }
+  return {}
+}
+
+export async function clearAppData() {
+  try {
+    const keys = await AsyncStorage.getAllKeys();
+    await AsyncStorage.multiRemove(keys);
+  } catch (error) {
+    console.error('Error clearing app data.');
+  }
 }

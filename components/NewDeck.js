@@ -4,9 +4,9 @@ import { white } from '../utils/color'
 import { connect } from 'react-redux'
 
 // import { handleSaveDeckTitle } from '../actions/decks'
-import { addDeckTitle } from '../actions'
-import { addDeck } from '../utils/api'
-import { generateUID } from '../utils/_DATA'
+import { saveDeckTitleAction  } from '../actions'
+import { saveDeckTitle } from '../utils/api'
+import { generateUID } from '../utils/helper'
 
 export class NewDeck extends Component {
   state = {
@@ -29,9 +29,9 @@ export class NewDeck extends Component {
       title: deckTitle,
       questions: []
     }
-    // dispatch(handleSaveDeckTitle({ deckTitle, deck_id }))
-    dispatch(addDeckTitle(deck))
-    addDeck(deck)
+    
+    dispatch(saveDeckTitleAction(deck))
+    saveDeckTitle(deck)
     
     this.setState({
       deckTitle: ''

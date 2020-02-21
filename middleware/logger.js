@@ -1,8 +1,8 @@
 const logger = store => next => action => {
   console.group(action.type)
-  console.warn(action)
+  console.log(action)
   const returnValue = next(action)
-  console.warn(store.getState())
+  console.log(store.getState())
   console.groupEnd()
   return returnValue
 }

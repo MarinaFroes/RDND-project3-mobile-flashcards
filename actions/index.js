@@ -12,26 +12,19 @@ export function receiveDecks(decks) {
   }
 }
 
-// export function receiveSingleDeck(deck) {
-//   return {
-//     type: RECEIVE_SINGLE_DECK,
-//     deck
-//   }
-// }
-
-export function addDeckTitle(deck) {
+export function saveDeckTitleAction(deck) {
   return {
     type: SAVE_DECK_TITLE,
     deck
   }
 }
 
-export function updateDecks(decks) {
-  return {
-    type: UPDATE_DECKS,
-    decks
-  }
-}
+// export function updateDecks(decks) {
+//   return {
+//     type: UPDATE_DECKS,
+//     decks
+//   }
+// }
 
 export function addCardToDeck(card) {
   return {

@@ -11,7 +11,6 @@ class Deck extends Component {
     const deck_id = this.props.route.params.deck_id
     const deck = this.props.decks[deck_id]
 
-    console.warn(deck_id)
     if (deck.questions.length === 0) {
       return alert('Add cards to start a quiz')
     }
@@ -75,7 +74,7 @@ class Deck extends Component {
 }
 
 function mapStateToProps({ decks }) {
-
+  console.log(decks)
   return {
     decks
   }
@@ -121,34 +120,3 @@ const styles = StyleSheet.create({
   }
 })
 
-
-
-/**
- * return (
-    <div style={{border: '2px solid green'}}>
-      <p>{deck.title}</p>
-      <p>{deck.questions.length} cards </p>
-      <Link to={{
-        pathname: "/newcard",
-        state: {
-          deck_id: deck_id
-        }
-      }}>Add card</Link>
-
-      <Link to={`/quiz/${deck_id}`}>Start quiz</Link>
-
-      {
-        deck.questions.length === 0
-          ? <p>You don't have any cards yet</p>
-          : deck.questions.map((card, index) => (
-            <Card
-              key={index}
-              card={card}
-              deck={deck}
-              index={index}
-            />
-          ))
-      }
-    </div>
-  )
- */
