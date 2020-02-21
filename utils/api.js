@@ -44,18 +44,22 @@ const dummyData = () => ({
 export async function getDecks() {
   try {
     const results = await AsyncStorage.getItem(UDACITY_FLASHCARDS_KEY)
+
     if (results) {
       const data = JSON.parse(results)
       return data
     }
     else {
       await AsyncStorage.setItem(UDACITY_FLASHCARDS_KEY, JSON.stringify(dummyData()))
+  
       return dummyData()
     }
+
   }
   catch (error) {
     await AsyncStorage.setItem(UDACITY_FLASHCARDS_KEY, JSON.stringify(dummyData()))
     return dummyData()
+    
   }
 }
 
