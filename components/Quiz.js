@@ -43,6 +43,8 @@ export class Quiz extends Component {
   }
 
   handleFinishQuiz = () => {
+    const deck_id = this.props.route.params.deck_id
+    
     clearLocalNotification().then(() => setLocalNotification)
 
     return this.props.navigation.navigate('Deck', {
