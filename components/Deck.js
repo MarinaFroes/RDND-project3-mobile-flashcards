@@ -10,7 +10,8 @@ class Deck extends Component {
   onPress = () => {
     const deck_id = this.props.route.params.deck_id
     const deck = this.props.decks[deck_id]
-    
+
+    console.warn(deck_id)
     if (deck.questions.length === 0) {
       return alert('Add cards to start a quiz')
     }
@@ -74,6 +75,7 @@ class Deck extends Component {
 }
 
 function mapStateToProps({ decks }) {
+
   return {
     decks
   }

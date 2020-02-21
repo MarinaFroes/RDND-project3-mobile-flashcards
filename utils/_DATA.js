@@ -1,4 +1,4 @@
-let decks = {
+export const decks = {
   'wdkp9xk3edalu40frxoigl': {
     deck_id: 'wdkp9xk3edalu40frxoigl',
     title: 'React',

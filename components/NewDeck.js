@@ -3,7 +3,9 @@ import { View, TextInput, StyleSheet, Button } from 'react-native'
 import { white } from '../utils/color'
 import { connect } from 'react-redux'
 
-import { handleSaveDeckTitle } from '../actions/decks'
+// import { handleSaveDeckTitle } from '../actions/decks'
+import { addDeckTitle } from '../actions'
+import { addDeck } from '../utils/api'
 import { generateUID } from '../utils/_DATA'
 
 export class NewDeck extends Component {
@@ -21,9 +23,16 @@ export class NewDeck extends Component {
     }
 
     const deck_id = generateUID()
-
-    dispatch(handleSaveDeckTitle({ deckTitle, deck_id }))
-
+    
+    const deck = {
+      deck_id,
+      title: deckTitle,
+      questions: []
+    }
+    // dispatch(handleSaveDeckTitle({ deckTitle, deck_id }))
+    dispatch(addDeckTitle(deck))
+    addDeck(deck)
+    
     this.setState({
       deckTitle: ''
     })
