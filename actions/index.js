@@ -24,3 +24,10 @@ export function addCardToDeckAction(card) {
     card
   }
 }
+
+export function deleteDeck(deck_id) {
+  return {
+    type: DELETE_DECK,
+    deck_id
+  }
+}

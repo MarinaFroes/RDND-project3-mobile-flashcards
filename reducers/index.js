@@ -2,6 +2,7 @@ import {
   RECEIVE_DECKS,
   SAVE_DECK_TITLE,
   ADD_CARD_TO_DECK,
+  DELETE_DECK
 } from '../actions'
 
 export default function reducer(state = {}, action) {
@@ -30,6 +31,11 @@ export default function reducer(state = {}, action) {
             answer
           })
         }
+      }
+    case DELETE_DECK:
+      delete state[action.deck_id];
+      return {
+        ...state
       }
     default:
       return state
