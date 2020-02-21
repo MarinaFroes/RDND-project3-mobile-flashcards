@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Button } from 'react-native'
-import { black, white } from '../utils/color'
 
+import { black, white } from '../utils/color'
 
 export class Card extends Component {
   state = {

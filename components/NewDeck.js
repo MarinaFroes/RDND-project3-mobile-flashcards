@@ -3,7 +3,6 @@ import { View, TextInput, StyleSheet, Button } from 'react-native'
 import { white } from '../utils/color'
 import { connect } from 'react-redux'
 
-// import { handleSaveDeckTitle } from '../actions/decks'
 import { saveDeckTitleAction  } from '../actions'
 import { saveDeckTitle } from '../utils/api'
 import { generateUID } from '../utils/helper'

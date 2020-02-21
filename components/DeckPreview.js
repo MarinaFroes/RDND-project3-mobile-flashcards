@@ -18,7 +18,7 @@ class DeckPreview extends Component {
         </View>
       </TouchableOpacity>
     )
-    }
+  }
 }
 
 export default DeckPreview

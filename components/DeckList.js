@@ -67,10 +67,7 @@ export class DeckList extends Component {
 
 function mapStateToProps(state) {
   const decksIds = state ? Object.keys(state) : null
-  console.log('---DECK LIST---')
-  // console.log(state)
-  console.log(state)
-  console.log('---END OF DECK LIST---')
+
   return { 
     loading: state === null ? true : false,
     decks: state,
