@@ -49,7 +49,7 @@ This app is the third project of the Udacity React Developer Nanodegree and foll
 
 - [x] The view includes a form for creating a new deck - which should just be an input for the title and a 'Create Deck' button.
 - [x] Pressing the button correctly creates the deck and routes the user to the Individual Deck view for the new deck.
-- [ ] Logic for notification has been implemented. Notifications are generated at a specific time if the user hasn't completed at least one quiz for that day.
+- [x] Logic for notification has been implemented. Notifications are generated at a specific time if the user hasn't completed at least one quiz for that day.
 - [x] The app works correctly in either Android OR iOS devices (or emulator).
 - [x] Project README identifies which platform(s) have been tested.
 
