@@ -102,12 +102,3 @@ export async function removeDeck(deck_id) {
   }
   return {}
 }
-
-export async function clearAppData() {
-  try {
-    const keys = await AsyncStorage.getAllKeys();
-    await AsyncStorage.multiRemove(keys);
-  } catch (error) {
-    console.error('Error clearing app data.');
-  }
-}
