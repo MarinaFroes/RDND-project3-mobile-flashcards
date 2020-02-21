@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import { View, TextInput, StyleSheet, Picker, Button } from 'react-native'
 import { connect } from 'react-redux'
 
-import { white} from '../utils/color'
-import { handleUpdateDecks } from '../actions/decks'
-import { handleAddCard } from '../actions/cards'
+import { white } from '../utils/color'
+// import { handleUpdateDecks } from '../actions/decks'
+// import { handleAddCard } from '../actions/cards'
+import { addCardToDeckAction } from '../actions'
+import { addCardToDeck } from '../utils/api'
+
 
 class NewCard extends Component {
   state = {
@@ -26,9 +29,12 @@ class NewCard extends Component {
       question,
       answer
     }
+    
+    dispatch(addCardToDeckAction(card))
+    addCardToDeck(card)
 
-    dispatch(handleAddCard(card))
-    dispatch(handleUpdateDecks())
+    // dispatch(handleAddCard(card))
+    // dispatch(handleUpdateDecks())
 
     this.setState({
       question: '',
@@ -69,7 +75,6 @@ class NewCard extends Component {
           <Picker.Item label="Incorrect" value="incorrect" />
         </Picker>
       </View>
-     
     )
   }
 }

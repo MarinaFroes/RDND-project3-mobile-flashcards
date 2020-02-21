@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { MaterialCommunityIcons} from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { gray } from '../utils/color'
 import Loading from './Loading'
 import DeckPreview from './DeckPreview'
-import { handleReceiveDecks } from '../actions/decks'
+import { receiveDecks } from '../actions'
+import { getDecks } from '../utils/api'
 
 export class DeckList extends Component {
   componentDidMount() {
     const { dispatch } = this.props
-
-    dispatch(handleReceiveDecks())
+    
+    getDecks()
+      .then((decks) => dispatch(receiveDecks(decks)))
   }
 
   render() {
@@ -60,12 +62,15 @@ export class DeckList extends Component {
   }
 }
 
-function mapStateToProps({ decks }) {
-  const decksIds = decks ? Object.keys(decks) : null
-
+function mapStateToProps(state) {
+  const decksIds = state ? Object.keys(state) : null
+  console.log('---DECK LIST---')
+  // console.log(state)
+  console.log(state)
+  console.log('---END OF DECK LIST---')
   return { 
-    loading: decks === null ? true : false,
-    decks,
+    loading: state === null ? true : false,
+    decks: state,
     decksIds
   }
 }

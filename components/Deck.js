@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Button, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import { FontAwesome } from '@expo/vector-icons'
 
 import { gray } from '../utils/color'
 import Card from './Card'
 import Loading from './Loading'
+import { removeDeck } from '../utils/api'
+import { deleteDeck } from '../actions/index'
 
 class Deck extends Component {
   onPress = () => {
     const deck_id = this.props.route.params.deck_id
     const deck = this.props.decks[deck_id]
-    
+
     if (deck.questions.length === 0) {
       return alert('Add cards to start a quiz')
     }
@@ -18,6 +21,14 @@ class Deck extends Component {
     return this.props.navigation.navigate('Quiz', {
       deck_id
     })
+  }
+
+  handleDelete = () => {
+    const deck_id = this.props.route.params.deck_id
+    this.props.dispatch(deleteDeck(deck_id))
+    removeDeck(deck_id)
+
+    return this.props.navigation.navigate('Decks')
   }
 
   render() {
@@ -30,6 +41,10 @@ class Deck extends Component {
 
   return (
     <ScrollView>
+      <TouchableOpacity style={styles.trash} onPress={this.handleDelete}>
+        <FontAwesome  name='trash-o' size={30} color={gray} />
+      </TouchableOpacity>
+      
       <View style={styles.deckHeader}>
         <Text style={styles.title}>
           {deck.title}
@@ -73,15 +88,22 @@ class Deck extends Component {
   }
 }
 
-function mapStateToProps({ decks }) {
+function mapStateToProps(state) {
+  console.log('---DECK---')
+  console.log(state)
+  console.log('---END OF DECK---')
   return {
-    decks
+    decks: state
   }
 }
 
 export default connect(mapStateToProps)(Deck)
 
 const styles = StyleSheet.create({
+  trash: {
+    alignSelf: 'flex-end',
+    margin: 10,
+  },
   deckHeader: {
     flex: 1,
     justifyContent: 'center',
@@ -119,34 +141,3 @@ const styles = StyleSheet.create({
   }
 })
 
-
-
-/**
- * return (
-    <div style={{border: '2px solid green'}}>
-      <p>{deck.title}</p>
-      <p>{deck.questions.length} cards </p>
-      <Link to={{
-        pathname: "/newcard",
-        state: {
-          deck_id: deck_id
-        }
-      }}>Add card</Link>
-
-      <Link to={`/quiz/${deck_id}`}>Start quiz</Link>
-
-      {
-        deck.questions.length === 0
-          ? <p>You don't have any cards yet</p>
-          : deck.questions.map((card, index) => (
-            <Card
-              key={index}
-              card={card}
-              deck={deck}
-              index={index}
-            />
-          ))
-      }
-    </div>
-  )
- */
