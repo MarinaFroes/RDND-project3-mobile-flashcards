@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { white } from '../utils/color'
 // import { handleUpdateDecks } from '../actions/decks'
 // import { handleAddCard } from '../actions/cards'
-import { addCardToDeck } from '../actions'
-import { addCard } from '../utils/api'
+import { addCardToDeckAction } from '../actions'
+import { addCardToDeck } from '../utils/api'
 
 
 class NewCard extends Component {
@@ -30,8 +30,8 @@ class NewCard extends Component {
       answer
     }
     
-    dispatch(addCardToDeck(card))
-    addCard(card)
+    dispatch(addCardToDeckAction(card))
+    addCardToDeck(card)
 
     // dispatch(handleAddCard(card))
     // dispatch(handleUpdateDecks())
@@ -75,7 +75,6 @@ class NewCard extends Component {
           <Picker.Item label="Incorrect" value="incorrect" />
         </Picker>
       </View>
-     
     )
   }
 }
