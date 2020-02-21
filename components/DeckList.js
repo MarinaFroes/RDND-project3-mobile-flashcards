@@ -33,7 +33,7 @@ export class DeckList extends Component {
             onPress={() => navigation.navigate('New Deck')}
           >
             <MaterialCommunityIcons
-              name='plus-circle'
+              name='plus'
               size={40}
               color={gray}
             />
