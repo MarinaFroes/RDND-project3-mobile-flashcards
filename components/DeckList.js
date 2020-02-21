@@ -8,11 +8,14 @@ import Loading from './Loading'
 import DeckPreview from './DeckPreview'
 import { receiveDecks } from '../actions'
 import { getDecks } from '../utils/api'
+import { setLocalNotification } from '../utils/helper'
 
 export class DeckList extends Component {
   componentDidMount() {
     const { dispatch } = this.props
     
+    setLocalNotification()
+
     getDecks()
       .then((decks) => dispatch(receiveDecks(decks)))
   }

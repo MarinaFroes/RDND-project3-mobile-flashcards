@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import Card from './Card'
 import Btn from './Btn'
+import { clearLocalNotification, setLocalNotification } from '../utils/helper'
 
 export class Quiz extends Component {
   state = {
@@ -41,6 +42,14 @@ export class Quiz extends Component {
     })
   }
 
+  handleFinishQuiz = () => {
+    clearLocalNotification().then(() => setLocalNotification)
+
+    return this.props.navigation.navigate('Deck', {
+      deck_id
+    })
+  }
+
   render() {
     const deck_id = this.props.route.params.deck_id
     const deck = this.props.decks[deck_id]
@@ -71,9 +80,7 @@ export class Quiz extends Component {
                 <Text style={styles.finalMessage}>You finished the quiz</Text>
                 <Text style={styles.finalMessage} >You got {(correctAnswers / deck.questions.length * 100).toFixed(2)}% of correct answers</Text>
 
-                <Button title='Back to Deck' onPress={() => this.props.navigation.navigate('Deck', {
-                  deck_id
-                })} />
+                <Button title='Back to Deck' onPress={this.handleFinishQuiz} />
 
                 <Button title='Restart quiz' onPress={this.handleRestartQuiz} />
               </View>
