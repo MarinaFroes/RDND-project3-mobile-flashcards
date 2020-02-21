@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { MaterialCommunityIcons, FontAwesome} from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { gray } from '../utils/color'
 import Loading from './Loading'
 import DeckPreview from './DeckPreview'
-// import { handleReceiveDecks } from '../actions/decks'
 import { receiveDecks } from '../actions'
-import { getDecks, clearAppData } from '../utils/api'
+import { getDecks } from '../utils/api'
 
 export class DeckList extends Component {
   componentDidMount() {
@@ -16,10 +15,6 @@ export class DeckList extends Component {
     
     getDecks()
       .then((decks) => dispatch(receiveDecks(decks)))
-  }
-
-  handleClearStorage = () => {
-    clearAppData()
   }
 
   render() {
@@ -41,16 +36,6 @@ export class DeckList extends Component {
           >
             <MaterialCommunityIcons
               name='plus'
-              size={40}
-              color={gray}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.addButton}
-            onPress={() => this.handleClearStorage()}
-          >
-            <FontAwesome
-              name='times'
               size={40}
               color={gray}
             />
