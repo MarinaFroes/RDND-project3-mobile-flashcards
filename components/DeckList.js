@@ -14,7 +14,6 @@ export class DeckList extends Component {
   componentDidMount() {
     const { dispatch } = this.props
     
-    // dispatch(handleReceiveDecks())
     getDecks()
       .then((decks) => dispatch(receiveDecks(decks)))
   }
@@ -79,11 +78,14 @@ export class DeckList extends Component {
 }
 
 function mapStateToProps(state) {
-  const decksIds = state.decks ? Object.keys(state.decks) : null
+  const decksIds = state ? Object.keys(state) : null
+  console.log('---DECK LIST---')
+  // console.log(state)
   console.log(state)
+  console.log('---END OF DECK LIST---')
   return { 
-    loading: state.decks === null ? true : false,
-    decks: state.decks,
+    loading: state === null ? true : false,
+    decks: state,
     decksIds
   }
 }

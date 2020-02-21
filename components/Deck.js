@@ -73,10 +73,12 @@ class Deck extends Component {
   }
 }
 
-function mapStateToProps({ decks }) {
-  console.log(decks)
+function mapStateToProps(state) {
+  console.log('---DECK---')
+  console.log(state)
+  console.log('---END OF DECK---')
   return {
-    decks
+    decks: state
   }
 }
 

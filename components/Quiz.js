@@ -84,9 +84,12 @@ export class Quiz extends Component {
   }
 }
 
-function mapStateToProps({ decks }) {
+function mapStateToProps(state) {
+  console.log('---QUIZ---')
+  console.log(state)
+  console.log('---END OF QUIZ---')
   return {
-    decks
+    decks: state
   }
 }
 
