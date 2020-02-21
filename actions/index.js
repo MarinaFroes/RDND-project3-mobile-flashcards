@@ -1,5 +1,4 @@
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
-// export const RECEIVE_SINGLE_DECK = 'RECEIVE_SINGLE_DECK'
 export const SAVE_DECK_TITLE = 'SAVE_DECK_TITLE'
 export const DELETE_DECK = 'DELETE_DECK'
 export const UPDATE_DECKS = 'UPDATE_DECKS'
@@ -19,14 +18,7 @@ export function saveDeckTitleAction(deck) {
   }
 }
 
-// export function updateDecks(decks) {
-//   return {
-//     type: UPDATE_DECKS,
-//     decks
-//   }
-// }
-
-export function addCardToDeck(card) {
+export function addCardToDeckAction(card) {
   return {
     type: ADD_CARD_TO_DECK,
     card
