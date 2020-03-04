@@ -1,6 +1,6 @@
-
-![logo](./assets/mylogo.svg) 
-# Mobile Flashcards Project  
+<p align="center"><img src="./assets/mylogo.svg" alt="logo" title="logo" width="80"></p>
+<h1 align="center">Mobile Flashcards Project  </h1>
+  
 ## Udacity React Developer Nanodegree Project 3 - Introduction
 
 This app is the third project of the Udacity React Developer Nanodegree and follows the "Mobile Flashcards project specification" listed bellow and all the style guides provided by Udacity:
@@ -11,7 +11,7 @@ This app is the third project of the Udacity React Developer Nanodegree and foll
 
 ## Overview
 
-![screenshot](./assets/ScreenShot.png)
+<p align="center"><img src="./assets/ScreenShot.png" alt="screenshot" title="screenshot"></p>
 
 ## Udacity Specification
 
